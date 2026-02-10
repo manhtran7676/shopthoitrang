@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fashion Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+.options{display:flex;gap:10px;margin-bottom:15px}
+
+.options select{flex:1;padding:6px;border-radius:20px;border:none;background:#222;color:#fff}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
+
+body{background:#0f0f0f;color:#fff;overflow-x:hidden}
+
+nav{position:fixed;top:0;width:100%;
+	padding:20px 60px;
+	display:flex;
+	justify-content:space-between;
+	backdrop-filter:blur(10px);z-index:10}
+
+nav a{text-decoration:none;color:#fff;margin-left:30px;transition:.3s}
+
+nav a:hover{color:#ffb703}
+.cart-icon{position:relative;cursor:pointer}
+
+.cart-count{position:absolute;top:-8px;right:-12px;background:#ffb703;color:#000;border-radius:50%;padding:2px 7px;font-size:12px;font-weight:600}
+
+header{height:100vh;display:flex;align-items:center;justify-content:center;position:relative}
+
+header video{position:absolute;width:100%;height:100%;object-fit:cover;z-index:-1}
+
+header h1{font-size:4rem;letter-spacing:4px;animation:fadeIn 2s}
+
+section{padding:120px 8%}
+
+.title{text-align:center;font-size:2.5rem;margin-bottom:60px}
+
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:40px}
+
+.card{background:#181818;border-radius:20px;overflow:hidden;transform:translateY(40px);opacity:0;transition:1s}
+
+.card.show{transform:translateY(0);opacity:1}
+
+.card img{width:100%;height:320px;object-fit:cover;transition:.6s}
+
+.card:hover img{transform:scale(1.1)}
+
+.card-content{padding:20px}
+
+.card-content h3{margin-bottom:10px}
+
+.card-content p{opacity:.7;margin-bottom:15px}
+
+.card-content button{padding:10px 25px;border:none;border-radius:30px;background:#ffb703;color:#000;font-weight:600;cursor:pointer}
+
+.banner{height:60vh;background:url("https://images.unsplash.com/photo-1521335629791-ce4aec67dd47") center/cover fixed;display:flex;align-items:center;justify-content:center;font-size:3rem;font-weight:700}
+
+footer{padding:40px;text-align:center;background:#000}
+
+.cart{position:fixed;top:0;right:-100%;width:380px;height:100vh;background:#111;padding:30px;transition:.6s;z-index:20;display:flex;flex-direction:column}
+
+.cart.active{right:0}
+
+.cart h2{text-align:center;margin-bottom:20px}
+
+.cart-items{flex:1;overflow-y:auto}
+
+.cart-item{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px}
+
+.cart-item span{font-size:14px}
+
+.cart-item button{background:none;border:none;color:#ffb703;cursor:pointer}
+
+.cart-total{font-size:18px;font-weight:600;margin-top:20px}
+
+.checkout{margin-top:20px;padding:12px;border:none;border-radius:30px;background:#ffb703;font-weight:600;cursor:pointer}
+
+@keyframes fadeIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+
+#loader{position:fixed;inset:0;background:#0f0f0f;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:1s}
+
+.loader-text{letter-spacing:6px;font-size:1.5rem;margin-bottom:20px;animation:pulse 1.5s infinite}
+
+.loader-bar{width:200px;height:4px;background:#222;overflow:hidden;border-radius:10px}
+
+.loader-bar span{display:block;width:40%;height:100%;background:#ffb703;animation:load 1.2s infinite}
+
+@keyframes load{0%{transform:translateX(-100%)}100%{transform:translateX(300%)}}
+
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+
+body.loaded #loader{opacity:0;pointer-events:none}
+
+</style>
+</head>
+<body>
+
+<nav>
+<div>FASHION</div>
+<div>
+	<div id="loader">
+<div class="loader-text">LOADING</div>
+<div class="loader-bar"><span></span></div>
+</div>
+<a href="#ao">Áo</a>
+<a href="#giay">Giày</a>
+<a href="about.html">Giới thiệu</a>
+<span class="cart-icon" onclick="toggleCart()">🛒<span class="cart-count">0</span></span>
+</div>
+</nav>
+
+<header>
+<video autoplay muted loop>
+<source src="https://cdn.coverr.co/videos/coverr-fashion-model-walking-5045/1080p.mp4" type="video/mp4">
+</video>
+<h1>STYLE YOUR LIFE</h1>
+</header>
+
+<section id="ao">
+<div class="title">Quần Áo</div>
+<div class="products">
+<div class="card">
+	<img src="https://images.unsplash.com/photo-1520975916090-3105956dac38">
+	<div class="card-content">
+		<h3>Hoodie</h3>
+		<p>450000</p>
+		<button onclick="addToCart('Hoodie',450000)">Thêm giỏ</button>
+		<div class="card-content">
+     <h3>Hoodie</h3>
+<p>450000</p>
+
+<div class="options">
+<select class="size">
+<option>S</option><option>M</option><option>L</option><option>XL</option>
+</select>
+<select class="color">
+<option>Đen</option><option>Trắng</option><option>Xám</option>
+</select>
+</div>
+
+
+<div class="card"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d">
+	<div class="card-content">
+		<h3>Áo Khoác</h3>
+		<p>650000</p>
+		<button onclick="addToCart('Áo Khoác',650000)">Thêm giỏ</button>
+	</div>
+</div>
+<div class="card">
+	<img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f">
+	<div class="card-content">
+		<h3>Áo Thun</h3>
+		<p>250000</p>
+		<button onclick="addToCart('Áo Thun',250000)">Thêm giỏ</button>
+	</div>
+</div>
+</div>
+</section>
+
+<div class="banner">NEW COLLECTION</div>
+
+<section id="giay">
+<div class="title">Giày</div>
+<div class="products">
+<div class="card"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff"><div class="card-content"><h3>Sneaker</h3><p>900000</p><button onclick="addToCart('Sneaker',900000)">Thêm giỏ</button></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77"><div class="card-content"><h3>Giày Thể Thao</h3><p>1200000</p><button onclick="addToCart('Giày Thể Thao',1200000)">Thêm giỏ</button></div></div>
+</div>
+</section>
+
+<footer>© 2026 Fashion Store</footer>
+
+<div class="cart">
+<h2>Giỏ Hàng</h2>
+<div class="cart-items"></div>
+<div class="cart-total">Tổng: 0đ</div>
+<button class="checkout">Thanh toán</button>
+</div>
+
+<script>
+const cards=document.querySelectorAll(".card")
+const observer=new IntersectionObserver(e=>{e.forEach(x=>x.isIntersecting&&x.target.classList.add("show"))},{threshold:.2})
+cards.forEach(c=>observer.observe(c))
+
+let cart=[]
+const cartBox=document.querySelector(".cart")
+const cartItems=document.querySelector(".cart-items")
+const totalEl=document.querySelector(".cart-total")
+const countEl=document.querySelector(".cart-count")
+
+function toggleCart(){cartBox.classList.toggle("active")}
+
+function addToCart(name,price){
+cart.push({name,price})
+renderCart()
+}
+
+function removeItem(i){
+cart.splice(i,1)
+renderCart()
+}
+
+function renderCart(){
+cartItems.innerHTML=""
+let total=0
+cart.forEach((item,i)=>{
+total+=item.price
+cartItems.innerHTML+=`<div class="cart-item"><span>${item.name}</span><span>${item.price.toLocaleString()}đ</span><button onclick="removeItem(${i})">✕</button></div>`
+})
+totalEl.textContent="Tổng: "+total.toLocaleString()+"đ"
+countEl.textContent=cart.length
+}
+window.addEventListener("load",()=>{
+setTimeout(()=>{
+document.body.classList.add("loaded")
+setTimeout(()=>document.getElementById("loader").remove(),500)
+},1200)
+})
+</script>
+
+</body>
+</html>

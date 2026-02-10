@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Giới thiệu | Fashion Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
+body{background:#0f0f0f;color:#fff;overflow-x:hidden}
+nav{position:fixed;top:0;width:100%;padding:20px 60px;display:flex;justify-content:space-between;backdrop-filter:blur(10px);z-index:10}
+nav a{text-decoration:none;color:#fff;margin-left:30px;transition:.3s}
+nav a:hover{color:#ffb703}
+header{height:70vh;background:url("https://images.unsplash.com/photo-1520975431344-8c6f0f8a38b9") center/cover;display:flex;align-items:center;justify-content:center}
+header h1{font-size:3.5rem;letter-spacing:4px;animation:fadeIn 1.5s}
+
+section{padding:120px 10%;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:60px}
+
+.box{background:#181818;padding:40px;border-radius:20px;opacity:0;transform:translateY(40px);transition:1s}
+
+.box.show{opacity:1;transform:translateY(0)}
+
+.box h2{margin-bottom:20px;color:#ffb703}
+
+.box p{line-height:1.8;opacity:.8}
+
+.banner{height:40vh;background:url("https://images.unsplash.com/photo-1512436991641-6745cdb1723f") center/cover fixed;display:flex;align-items:center;justify-content:center;font-size:2.5rem;font-weight:600}
+
+footer{padding:40px;text-align:center;background:#000}
+@keyframes fadeIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<nav>
+<div>FASHION</div>
+<div>
+<a href="index2.html">Trang chủ</a>
+<a href="about.html">Giới thiệu</a>
+</div>
+</nav>
+
+<header>
+<h1>CHÚNG TÔI LÀ AI</h1>
+</header>
+
+<section>
+<div class="box">
+<h2>Fashion Store</h2>
+<p>Fashion Store được tạo ra để mang đến những sản phẩm thời trang hiện đại, cá tính và truyền cảm hứng. Chúng tôi tin rằng phong cách không chỉ là quần áo, mà là cách bạn thể hiện bản thân.</p>
+</div>
+<div class="box">
+<h2>Sứ mệnh</h2>
+<p>Mang đến trải nghiệm mua sắm trực tuyến mượt mà, sáng tạo và khác biệt. Mỗi sản phẩm đều được chọn lọc kỹ lưỡng để đảm bảo chất lượng và xu hướng.</p>
+</div>
+<div class="box">
+<h2>Tầm nhìn</h2>
+<p>Trở thành thương hiệu thời trang được giới trẻ yêu thích, nơi giao thoa giữa công nghệ, nghệ thuật và phong cách sống.</p>
+</div>
+</section>
+
+<div class="banner">STYLE • QUALITY • CONFIDENCE</div>
+
+<footer>© 2026 Fashion Store</footer>
+
+<script>
+const boxes=document.querySelectorAll(".box")
+const observer=new IntersectionObserver(e=>{e.forEach(x=>x.isIntersecting&&x.target.classList.add("show"))},{threshold:.2})
+boxes.forEach(b=>observer.observe(b))
+</script>
+
+</body>
+</html>
